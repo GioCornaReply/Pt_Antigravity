@@ -49,7 +49,7 @@ export default function WorkoutView({ date }: WorkoutViewProps) {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`http://127.0.0.1:8000/api/workout/${apiDate}`);
+                const res = await fetch(`/api/workout?date=${apiDate}`);
                 const json = await res.json();
                 setData(json);
             } catch (e) {
@@ -66,7 +66,7 @@ export default function WorkoutView({ date }: WorkoutViewProps) {
     const handleLog = async (exerciseName: string) => {
         if (!logInput.trim()) return;
         try {
-            const res = await fetch('http://127.0.0.1:8000/api/log', {
+            const res = await fetch('/api/log', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ type: 'workout', content: `Esercizio: ${exerciseName}. ${logInput}` })

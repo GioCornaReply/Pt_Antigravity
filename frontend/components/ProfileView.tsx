@@ -14,7 +14,7 @@ export default function ProfileView() {
         // Fetch current user data when component mounts
         const fetchUser = async () => {
             try {
-                const res = await fetch('http://127.0.0.1:8000/api/user');
+                const res = await fetch('/api/user');
                 if (res.ok) {
                     const data = await res.json();
                     if (data) {
@@ -37,7 +37,7 @@ export default function ProfileView() {
         setMessage('');
 
         try {
-            const res = await fetch('http://127.0.0.1:8000/api/user', {
+            const res = await fetch('/api/user', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

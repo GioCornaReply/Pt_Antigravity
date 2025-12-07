@@ -29,7 +29,7 @@ export default function NutritionView({ date }: NutritionViewProps) {
             setLoading(true);
             setError(null);
             try {
-                const res = await fetch(`http://127.0.0.1:8000/api/nutrition/${apiDate}`);
+                const res = await fetch(`/api/nutrition?date=${apiDate}`);
                 if (!res.ok) throw new Error("Errore nel caricamento dei dati");
                 const json = await res.json();
                 setData(json);

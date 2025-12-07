@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/user');
+        const res = await fetch('/api/user');
         if (res.ok) {
           const user = await res.json();
           if (user) {

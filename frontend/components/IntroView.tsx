@@ -16,7 +16,7 @@ export default function IntroView({ onComplete }: { onComplete: (name: string) =
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
 
-            const res = await fetch('http://127.0.0.1:8000/api/user', {
+            const res = await fetch('/api/user', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
