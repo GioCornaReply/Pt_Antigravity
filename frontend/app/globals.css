@@ -29,8 +29,17 @@ body {
 
 /* Mobile Frame Utilities */
 .mobile-frame {
-  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full sm:w-[400px] sm:h-[850px] sm:rounded-[3rem] sm:border-[8px] sm:border-[#2a2a2a] bg-black overflow-hidden shadow-2xl;
+  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-black overflow-hidden shadow-2xl;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 640px) {
+  .mobile-frame {
+    width: 400px;
+    height: 850px;
+    border-radius: 3rem;
+    border: 8px solid #2a2a2a;
+  }
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
