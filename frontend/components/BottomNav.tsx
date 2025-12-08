@@ -1,6 +1,6 @@
 'use client';
 
-import { Home, Dumbbell, Utensils, User } from 'lucide-react';
+import { Home, Dumbbell, Utensils } from 'lucide-react';
 
 type Tab = 'home' | 'workout' | 'nutrition' | 'profile';
 
@@ -36,14 +36,10 @@ export default function BottomNav({ activeTab, setActiveTab }: BottomNavProps) {
                 <span className="sr-only">Nutrizione</span>
             </button>
 
-            <button
-                onClick={() => setActiveTab('profile')}
-                className={`p-3 rounded-xl transition-all ${activeTab === 'profile' ? 'bg-accent text-background shadow-[0_0_15px_rgba(41,203,232,0.4)]' : 'text-gray-400 hover:text-white'}`}
-            >
-                <User size={24} />
-                <span className="sr-only">Profilo</span>
-            </button>
+            {/* Placeholder Slot */}
+            <div className="p-3 w-[48px] h-[48px] flex items-center justify-center rounded-xl border border-white/5 bg-white/5">
+                <span className="text-[10px] text-gray-600 text-center leading-tight">Space Empty</span>
+            </div>
         </div>
     );
 }
-
