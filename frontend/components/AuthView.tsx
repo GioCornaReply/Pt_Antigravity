@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { User, Lock, Mail, Camera } from 'lucide-react';
+import { User, Lock, Mail, ArrowRight, Dumbbell } from 'lucide-react';
 
 interface AuthViewProps {
     onLogin: (user: any) => void;
@@ -47,71 +47,101 @@ export default function AuthView({ onLogin }: AuthViewProps) {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center h-full p-8 text-center space-y-8">
-            <div className="space-y-2">
-                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <User size={40} className="text-accent" />
-                </div>
-                <h1 className="text-4xl font-bold text-white">PT Gym</h1>
-                <p className="text-gray-400">Il tuo Personal Trainer AI</p>
-            </div>
+        <div className="flex flex-col items-center justify-center h-full p-8 relative overflow-hidden bg-black">
+            {/* Background Effects */}
+            <div className="absolute top-[-20%] left-[-20%] w-[300px] h-[300px] bg-accent/20 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute bottom-[-20%] right-[-20%] w-[300px] h-[300px] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none"></div>
 
-            <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
-                {!isLogin && (
-                    <div className="relative">
-                        <User className="absolute left-3 top-3 text-gray-500" size={20} />
-                        <input
-                            type="text"
-                            placeholder="Nome"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="w-full bg-card border border-white/10 rounded-xl p-3 pl-10 text-white focus:border-accent outline-none"
-                            required
-                        />
+            <div className="z-10 w-full max-w-sm flex flex-col items-center space-y-8">
+                {/* Logo Section */}
+                <div className="flex flex-col items-center space-y-4">
+                    <div className="w-24 h-24 bg-gradient-to-br from-accent to-blue-600 rounded-3xl flex items-center justify-center shadow-[0_0_30px_rgba(41,203,232,0.5)] transform rotate-3">
+                        <Dumbbell size={48} className="text-black transform -rotate-3" />
                     </div>
-                )}
-
-                <div className="relative">
-                    <Mail className="absolute left-3 top-3 text-gray-500" size={20} />
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full bg-card border border-white/10 rounded-xl p-3 pl-10 text-white focus:border-accent outline-none"
-                        required
-                    />
+                    <div className="text-center">
+                        <h1 className="text-4xl font-black text-white tracking-tight">PT Gym</h1>
+                        <p className="text-gray-400 font-medium">Il tuo coach digitale</p>
+                    </div>
                 </div>
 
-                <div className="relative">
-                    <Lock className="absolute left-3 top-3 text-gray-500" size={20} />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="w-full bg-card border border-white/10 rounded-xl p-3 pl-10 text-white focus:border-accent outline-none"
-                        required
-                    />
-                </div>
+                {/* Form Section */}
+                <form onSubmit={handleSubmit} className="w-full space-y-4 backdrop-blur-md bg-white/5 p-6 rounded-3xl border border-white/10 shadow-xl">
+                    <div className="space-y-4">
+                        {!isLogin && (
+                            <div className="relative group">
+                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-accent transition-colors" size={20} />
+                                <input
+                                    type="text"
+                                    placeholder="Nome Completo"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    className="w-full bg-black/50 border border-white/10 rounded-2xl p-4 pl-12 text-white placeholder-gray-500 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"
+                                    required
+                                />
+                            </div>
+                        )}
 
-                {error && <p className="text-red-400 text-sm">{error}</p>}
+                        <div className="relative group">
+                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-accent transition-colors" size={20} />
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-2xl p-4 pl-12 text-white placeholder-gray-500 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"
+                                required
+                            />
+                        </div>
 
+                        <div className="relative group">
+                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-accent transition-colors" size={20} />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-2xl p-4 pl-12 text-white placeholder-gray-500 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    {error && (
+                        <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm text-center">
+                            {error}
+                        </div>
+                    )}
+
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full bg-gradient-to-r from-accent to-blue-500 text-black font-bold py-4 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(41,203,232,0.4)] disabled:opacity-50 disabled:hover:scale-100 flex items-center justify-center gap-2"
+                    >
+                        {loading ? (
+                            <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                        ) : (
+                            <>
+                                {isLogin ? 'Accedi' : 'Inizia Ora'}
+                                <ArrowRight size={20} />
+                            </>
+                        )}
+                    </button>
+                </form>
+
+                {/* Toggle Section */}
                 <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-accent text-background font-bold py-3 rounded-xl hover:bg-accent/80 transition-colors shadow-[0_0_20px_rgba(41,203,232,0.4)] disabled:opacity-50"
+                    onClick={() => {
+                        setIsLogin(!isLogin);
+                        setError('');
+                    }}
+                    className="text-gray-400 text-sm hover:text-white transition-colors flex items-center gap-1 group"
                 >
-                    {loading ? 'Caricamento...' : (isLogin ? 'Accedi' : 'Registrati')}
+                    {isLogin ? 'Nuovo qui?' : 'Hai già un account?'}
+                    <span className="text-accent underline decoration-transparent group-hover:decoration-accent transition-all">
+                        {isLogin ? 'Crea un account' : 'Accedi'}
+                    </span>
                 </button>
-            </form>
-
-            <button
-                onClick={() => setIsLogin(!isLogin)}
-                className="text-gray-400 text-sm hover:text-white transition-colors"
-            >
-                {isLogin ? 'Non hai un account? Registrati' : 'Hai già un account? Accedi'}
-            </button>
+            </div>
         </div>
     );
 }
