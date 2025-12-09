@@ -11,7 +11,9 @@ import BottomNav from '@/components/BottomNav';
 import TopBar from '@/components/TopBar';
 import { MessageSquare } from 'lucide-react';
 
-export type ViewState = 'home' | 'workout' | 'nutrition' | 'profile';
+import MuscleCalendar from '@/components/MuscleCalendar';
+
+export type ViewState = 'home' | 'workout' | 'nutrition' | 'profile' | 'calendar';
 
 export default function Home() {
   const [user, setUser] = useState<any>(null);
@@ -61,6 +63,7 @@ export default function Home() {
               {view === 'home' && <HomeView userName={user.name} onSelectDate={handleDateSelect} />}
               {view === 'workout' && <WorkoutView date={selectedDate} />}
               {view === 'nutrition' && <NutritionView date={selectedDate} />}
+              {view === 'calendar' && <MuscleCalendar onSelectDate={handleDateSelect} />}
               {view === 'profile' && <ProfileView user={user} onUpdate={setUser} />}
             </div>
 
