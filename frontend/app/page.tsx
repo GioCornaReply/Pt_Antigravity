@@ -82,9 +82,8 @@ export default function Home() {
             )}
 
             {/* Chat Interface Overlay */}
-            <div className={`fixed inset-x-0 bottom-0 transition-all duration-300 z-50 ${isChatOpen ? 'h-[80%] rounded-t-3xl' : 'h-0 overflow-hidden'}`}>
-              <ChatInterface isExpanded={true} toggleExpand={() => setIsChatOpen(false)} />
-            </div>
+            {/* Chat Interface Overlay */}
+            <ChatInterface isExpanded={isChatOpen} toggleExpand={() => setIsChatOpen(false)} />
           </>
         )}
       </div>

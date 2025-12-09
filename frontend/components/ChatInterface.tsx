@@ -77,7 +77,7 @@ export default function ChatInterface({ isExpanded, toggleExpand }: { isExpanded
     };
 
     return (
-        <div className={`bg-card flex flex-col shadow-[0_-4px_30px_rgba(0,0,0,0.5)] transition-all duration-300 border-t border-white/10 ${isExpanded ? 'h-full w-full rounded-none' : 'h-full rounded-t-3xl'}`}>
+        <div className={`fixed inset-x-0 bottom-0 bg-card flex flex-col shadow-[0_-4px_30px_rgba(0,0,0,0.5)] transition-all duration-300 border-t border-white/10 z-50 ${isExpanded ? 'h-[85%] rounded-t-3xl' : 'h-0 overflow-hidden'}`}>
             {/* Header */}
             <div className="p-4 border-b border-white/5 flex justify-between items-center bg-card/95 backdrop-blur-sm sticky top-0 z-10">
                 <div className="flex items-center gap-3">
